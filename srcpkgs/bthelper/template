@@ -1,0 +1,25 @@
+# Template file for 'bthelper'
+pkgname=bthelper
+version=20220204
+_gitrev=549ce9474fbd6e9677e75ddd4480231c984f8e7b
+revision=1
+hostmakedepends="automake libtool which"
+build_style=gnu-configure
+short_desc="Bluetooth helper tools for setting up serial ports for e.g. SSH"
+maintainer="Tamas Jantvik <tsjk@hotmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/ThomasHabets/$pkgname"
+distfiles="https://github.com/ThomasHabets/${pkgname}/archive/${_gitrev}.tar.gz"
+wrksrc="${pkgname}-${_gitrev}"
+checksum=0364f0814a5a8ef0cda97aa2eba5fb72cb0525232c14334f4152e4117fa3c1cc
+
+pre_configure() {
+	./bootstrap.sh
+}
+
+do_install() {
+	vbin bt-connecter
+	vbin bt-listener
+	vdoc README.md
+	vlicense LICENSE
+}
