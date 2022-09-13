@@ -1,0 +1,26 @@
+# Template file for 'bluez-tools'
+pkgname=bluez-tools
+version=20201025
+_gitrev=f65321736475429316f07ee94ec0deac8e46ec4a
+revision=1
+hostmakedepends="automake libtool pkg-config which"
+makedepends="libbluetooth-devel dbus-glib-devel libglib-devel readline-devel"
+build_style=gnu-configure
+short_desc="A set of tools to manage Bluetooth devices for Linux"
+maintainer="Tamas Jantvik <tsjk@hotmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/khvzak/$pkgname"
+distfiles="https://github.com/khvzak/${pkgname}/archive/${_gitrev}.tar.gz"
+wrksrc="${pkgname}-${_gitrev}"
+checksum=dd5acf9e501514f4ad1136af966d2723f3270e0e2fffd6d29da93fa76c9fafa3
+
+CFLAGS+="-fcommon"
+
+pre_configure() {
+	autoreconf -fi
+}
+
+post_install() {
+	vdoc README
+	vlicense COPYING
+}
