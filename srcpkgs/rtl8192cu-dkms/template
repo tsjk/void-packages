@@ -1,0 +1,46 @@
+# Template file for 'rtl8192cu-dkms'
+pkgname=rtl8192cu-dkms
+version=20220209
+revision=1
+_modver=1.1
+_gitrev=e5c01a328d2a17f6e6553e30c9cf546076d61021
+depends="dkms"
+short_desc="Repackaging of Realtek's own 8192CU USB WiFi driver for more recent kernels (DKMS)"
+maintainer="Tamas Jantvik <tsjk@hotmail.com>"
+license="GPL-2.0-only"
+homepage="https://github.com/pvaret/rtl8192cu-fixes"
+distfiles="https://github.com/pvaret/rtl8192cu-fixes/archive/${_gitrev}.tar.gz"
+checksum=af3a5272564cb4c3238a65954b7f4ecf402bf6665e32f3ec1fd424a63193b9aa
+dkms_modules="rtl8192cu ${_modver}"
+
+case "$XBPS_TARGET_MACHINE" in
+	x86_64*) _karch="x86_64";;
+	i686*) _karch="i386";;
+	aarch64*) _karch="arm64";;
+	arm*) _karch="arm";;
+	ppc*) _karch="powerpc";;
+	mips*) _karch="mips";;
+	*) broken="kernel arch not defined";;
+esac
+
+post_patch() {
+	if [ "$XBPS_TARGET_ENDIAN" = "be" ]; then
+		vsed -i 's,@@VOID_ENDIAN@@,BIG,g' Makefile
+	else
+		vsed -i 's,@@VOID_ENDIAN@@,LITTLE,g' Makefile
+	fi
+	vsed -i "s,@@VOID_ARCH@@,${_karch},g" Makefile
+	rm *.patch
+}
+
+do_install() {
+	local dest=/usr/src/rtl8192cu-${_modver}
+
+	vmkdir ${dest}
+	cp -r dkms.conf Makefile 8192cu-disable-power-management.conf blacklist-native-rtl8192.conf clean README.md runwpa core hal include os_dep ${DESTDIR}/${dest}
+	
+	# modules-load.d(5) file.
+	vmkdir usr/lib/modules-load.d
+	echo "8192cu" > ${DESTDIR}/usr/lib/modules-load.d/${pkgname}.conf
+	chmod 644 ${DESTDIR}/usr/lib/modules-load.d/${pkgname}.conf
+}

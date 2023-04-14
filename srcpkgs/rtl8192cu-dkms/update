@@ -1,0 +1,2 @@
+site="https://github.com/pvaret/rtl8192cu-fixes"
+pattern='8192cu-\K[\d.]+(?=">)'
