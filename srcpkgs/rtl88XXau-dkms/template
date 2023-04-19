@@ -1,0 +1,46 @@
+# Template file for 'rtl8812au-dkms'
+pkgname=rtl88XXau-dkms
+version=20230402
+revision=1
+_modver="5.6.4.2~20221105"
+_gitrev=fe71d8368671cb074b8ed6278ffd57308056fa20
+depends="dkms"
+short_desc="RTL8812AU/21AU and RTL8814AU Wireless drivers (DKMS)"
+maintainer="Tamas Jantvik <tsjk@hotmail.com>"
+license="GPL-2.0-only"
+homepage="https://github.com/aircrack-ng/rtl8812au"
+distfiles="https://github.com/aircrack-ng/rtl8812au/archive/${_gitrev}.tar.gz"
+checksum=3fc66dc690747bb321b22e4c7ba16b47d4b6aa9618a9fc267d4f7ad3bfe09af9
+dkms_modules="rtl88XXau ${_modver}"
+
+case "$XBPS_TARGET_MACHINE" in
+	x86_64*) _karch="x86_64";;
+	i686*) _karch="i386";;
+	aarch64*) _karch="arm64";;
+	arm*) _karch="arm";;
+	ppc*) _karch="powerpc";;
+	mips*) _karch="mips";;
+	*) broken="kernel arch not defined";;
+esac
+
+post_patch() {
+	if [ "$XBPS_TARGET_ENDIAN" = "be" ]; then
+		vsed -i 's,@@VOID_ENDIAN@@,BIG,g' Makefile
+	else
+		vsed -i 's,@@VOID_ENDIAN@@,LITTLE,g' Makefile
+	fi
+	vsed -i "s,@@VOID_ARCH@@,${_karch},g" Makefile
+	rm *.patch
+}
+
+do_install() {
+	local dest=/usr/src/rtl88XXau-${_modver}
+
+	vmkdir ${dest}
+	cp -r dkms.conf Kconfig Makefile core hal include os_dep platform ${DESTDIR}/${dest}
+
+	# modules-load.d(5) file.
+	vmkdir usr/lib/modules-load.d
+	echo "88XXau" > ${DESTDIR}/usr/lib/modules-load.d/${pkgname}.conf
+	chmod 644 ${DESTDIR}/usr/lib/modules-load.d/${pkgname}.conf
+}

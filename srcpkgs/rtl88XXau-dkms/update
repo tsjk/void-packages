@@ -1,0 +1,2 @@
+site="https://github.com/aircrack-ng/rtl8812au"
+pattern='8812au-\K[\d.]+(?=">)'
