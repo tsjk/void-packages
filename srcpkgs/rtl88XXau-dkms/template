@@ -1,16 +1,17 @@
 # Template file for 'rtl8812au-dkms'
 pkgname=rtl88XXau-dkms
-version=20230402
+version=20260317
 revision=1
-_modver="5.6.4.2~20221105"
-_gitrev=fe71d8368671cb074b8ed6278ffd57308056fa20
+# from dkms.conf
+_modver="5.6.4.2~20230501"
+_gitrev=734485506a30d6237c2deaad666a19f8ca5379f2
 depends="dkms"
 short_desc="RTL8812AU/21AU and RTL8814AU Wireless drivers (DKMS)"
 maintainer="Tamas Jantvik <tsjk@hotmail.com>"
 license="GPL-2.0-only"
 homepage="https://github.com/aircrack-ng/rtl8812au"
 distfiles="https://github.com/aircrack-ng/rtl8812au/archive/${_gitrev}.tar.gz"
-checksum=3fc66dc690747bb321b22e4c7ba16b47d4b6aa9618a9fc267d4f7ad3bfe09af9
+checksum=ab9d257758ec55a352a5671e3b96c0d73795c5ccea01173d4412dad35fd70d7e
 dkms_modules="rtl88XXau ${_modver}"
 
 case "$XBPS_TARGET_MACHINE" in
