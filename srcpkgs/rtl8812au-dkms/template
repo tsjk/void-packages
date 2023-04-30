@@ -1,16 +1,17 @@
 # Template file for 'rtl8812au-dkms'
 pkgname=rtl8812au-dkms
 version=20210820
-revision=1
-_modver=5.13.6
-_gitrev=c0efee9cd121d9f0c815d9771475f76339a8f7d3
+revision=2
+# from dkms.conf
+_modver=5.13.6-23
+_gitrev=ad90dfb072ed4aed0703f1209272195214fb4300
 depends="dkms"
 short_desc="Realtek 8812AU USB WiFi driver (DKMS)"
 maintainer="Brian Olsen <bnolsen@gmail.com>"
 license="GPL-2.0-only"
 homepage="https://github.com/morrownr/8812au"
 distfiles="https://github.com/morrownr/8812au-${version}/archive/${_gitrev}.tar.gz"
-checksum=bfd887920a4bfc588b0b738e33caddcb63e57e37129a47c1e761cbab30d1fa9c
+checksum=dc6097c9507fe3f9aa20f6654bbe76df6a58879aecd5dd697e1ee920b8e1a18f
 dkms_modules="rtl8812au ${_modver}"
 
 case "$XBPS_TARGET_MACHINE" in
@@ -44,7 +45,7 @@ do_install() {
 	DEST_MODULE_LOCATION[0]="/kernel/drivers/net/wireless"
 	EOF
 	vmkdir ${dest}
-	cp -r dkms.conf Kconfig Makefile platform core hal include os_dep ${DESTDIR}/${dest}
+	cp -r dkms.conf dkms-make.sh Kconfig 8812au.conf Makefile platform core hal include os_dep ${DESTDIR}/${dest}
 
 	# modules-load.d(5) file.
 	vmkdir usr/lib/modules-load.d
