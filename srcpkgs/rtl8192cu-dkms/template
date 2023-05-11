@@ -2,7 +2,7 @@
 pkgname=rtl8192cu-dkms
 version=20220209
 revision=1
-_modver=1.1
+_modver=1.11
 _gitrev=e5c01a328d2a17f6e6553e30c9cf546076d61021
 depends="dkms"
 short_desc="Repackaging of Realtek's own 8192CU USB WiFi driver for more recent kernels (DKMS)"
@@ -38,7 +38,7 @@ do_install() {
 
 	vmkdir ${dest}
 	cp -r dkms.conf Makefile 8192cu-disable-power-management.conf blacklist-native-rtl8192.conf clean README.md runwpa core hal include os_dep ${DESTDIR}/${dest}
-	
+
 	# modules-load.d(5) file.
 	vmkdir usr/lib/modules-load.d
 	echo "8192cu" > ${DESTDIR}/usr/lib/modules-load.d/${pkgname}.conf
