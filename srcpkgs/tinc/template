@@ -3,6 +3,7 @@ pkgname=tinc
 version=1.0.37
 revision=1
 build_style=gnu-configure
+configure_args="--enable-jumbograms --disable-tunemu --enable-lzo --disable-uml --disable-vde --enable-zlib"
 makedepends="zlib-devel lzo-devel openssl-devel"
 short_desc="VPN (Virtual Private Network) daemon"
 maintainer="Orphaned <orphan@voidlinux.org>"
