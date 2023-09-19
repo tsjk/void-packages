@@ -41,6 +41,7 @@ case $XBPS_TARGET_MACHINE in
 	ppc64*) configure_args+=" linux-ppc64";;
 	ppcle*) configure_args+=" linux-ppcle";;
 	ppc*) configure_args+=" linux-ppc";;
+	armv6l) configure_args+=" linux-armv4 -march=armv6kz+fp -mtune=arm1176jzf-s -mlibarch=armv6kz+fp -marm -mfloat-abi=hard -mfpu=vfp -mtls-dialect=gnu";;
 	arm*) configure_args+=" linux-armv4";;
 	mips*) configure_args+=" linux-mips32 -mips32";;
 	riscv64*) configure_args+=" linux64-riscv64";;
