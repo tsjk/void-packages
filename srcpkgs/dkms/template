@@ -19,6 +19,8 @@ make_dirs="/var/lib/dkms 0755 root root"
 case "$XBPS_TARGET_MACHINE" in
 	# Too many competing kernels for arm* to depend on linux-headers
 	arm*) ;;
+	# Too many competing kernels for aarch64* to depend on linux-headers
+	aarch64*) ;;
 	*) depends+=" linux-headers" ;;
 esac
 
