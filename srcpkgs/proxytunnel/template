@@ -1,0 +1,27 @@
+# Template file for 'proxytunnel'
+pkgname=proxytunnel
+version=1.12.2
+revision=1
+build_style=gnu-makefile
+make_use_env=yes
+hostmakedepends="asciidoc pkg-config openssl-devel xmlto"
+makedepends="asciidoc pkg-config openssl-devel xmlto"
+short_desc="Creates tunnels through HTTP(S) proxies for any TCP based protocol"
+maintainer="N/A <nobody@inter.net>"
+license="GPL"
+homepage="https://github.com/proxytunnel/proxytunnel/"
+distfiles="https://github.com/proxytunnel/proxytunnel/archive/refs/tags/v${version}.tar.gz"
+checksum=edb33a74ba49e745b55b790f123366c8336729947225f4b5d816f1f90551ecfe
+
+CFLAGS+="-fcommon"
+
+post_extract() {
+	vsed -i 's|shell pkg-config --libs libssl 2>/dev/null|shell pkg-config --libs libssl libcrypto 2>/dev/null|' Makefile
+	vsed -i 's|install -p -m555 |install -p -m755 |' Makefile
+}
+
+do_install() {
+	vmkdir usr/bin
+	vmkdir usr/share/man/man1
+	make prefix=${DESTDIR}/usr mandir=${DESTDIR}/usr/share/man install
+}
