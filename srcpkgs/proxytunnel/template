@@ -1,6 +1,6 @@
 # Template file for 'proxytunnel'
 pkgname=proxytunnel
-version=1.12.2
+version=1.13.0
 revision=1
 build_style=gnu-makefile
 make_use_env=yes
@@ -11,7 +11,7 @@ maintainer="N/A <nobody@inter.net>"
 license="GPL"
 homepage="https://github.com/proxytunnel/proxytunnel/"
 distfiles="https://github.com/proxytunnel/proxytunnel/archive/refs/tags/v${version}.tar.gz"
-checksum=edb33a74ba49e745b55b790f123366c8336729947225f4b5d816f1f90551ecfe
+checksum=1b1ae36327254cac351aa5358767c177b050ab4ce4a75fa100244da7816849e9
 
 CFLAGS+="-fcommon"
 
