@@ -1,16 +1,17 @@
 # Template file for 'dtach-ng'
 pkgname=dtach-ng
 conflicts=dtach
-version=0.10
+_gitrev=38df2d648dc99438025bf66585784c9000bfb954
+version=0.10.20250615
 revision=1
 build_style=gnu-configure
 short_desc="Tiny program that emulates the detach feature of GNU screen (ng-fork)"
 maintainer="Tamas Jantvik <tsjk@hotmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/xPMo/dtach"
-distfiles="https://github.com/xPMo/dtach/archive/refs/tags/v${version}.tar.gz"
+distfiles="https://github.com/xPMo/dtach/archive/${_gitrev}.tar.gz"
 wrksrc="dtach-${version}"
-checksum=06e386fd3ff3af17aa3b6a54f1357bc6d2554937c8e6f588019a12bfb2410cd1
+checksum=@d07666798c90370c430f3d3692e60116eb17a9ff419f5848f3561fdf5856f5f9
 
 do_install() {
 	vbin dtach
