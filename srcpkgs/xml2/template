@@ -1,0 +1,20 @@
+# Template file for 'xml2'
+pkgname=xml2
+version=0.5
+revision=5
+build_style=configure
+configure_args="--prefix=/usr"
+hostmakedepends="pkg-config"
+makedepends="libxml2-devel"
+depends="libxml2"
+short_desc="Tools to convert XML and HTML to and from a line-oriented format"
+maintainer="Tamas Jantvik <tsjk@hotmail.com>"
+license="GPL-2"
+homepage="http://dan.egnor.name/xml2"
+distfiles="https://salsa.debian.org/debian/${pkgname}/-/archive/debian/${version}-${revision}/${pkgname}-debian-${version}-${revision}.tar.bz2"
+checksum=f301cfc264ee5b0905197d598ce8b7111a7758fc616304c467a518d8d31673c2
+
+post_install() {
+        ln -sf /usr/bin/xml2 ${DESTDIR}/usr/bin/html2
+        ln -sf /usr/bin/2xml ${DESTDIR}/usr/bin/2html
+}
