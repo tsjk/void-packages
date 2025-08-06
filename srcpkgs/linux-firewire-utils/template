@@ -1,0 +1,16 @@
+# Template file for 'linux-firewire-utils'
+pkgname=linux-firewire-utils
+version=0.5.1
+revision=1
+build_style=meson
+short_desc="Linux FireWire bus inspection and configuration tools"
+maintainer="Tamas Jantvik <tsjk@hotmail.com>"
+license="GPL-2"
+homepage="https://git.kernel.org/pub/scm/utils/ieee1394/linux-firewire-utils.git/about/"
+distfiles="https://www.kernel.org/pub/linux/utils/ieee1394/${pkgname}-${version}.tar.xz"
+checksum=348336dcab1cf7a405c7ef8772831761955ef1afb6928f5f7f921a6ffda8abc2
+
+post_install() {
+        vdoc README.rst
+        vlicense COPYING
+}
