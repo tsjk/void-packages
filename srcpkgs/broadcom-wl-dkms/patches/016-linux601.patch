@@ -1,6 +1,6 @@
 --- a/src/wl/sys/wl_cfg80211_hybrid.c
 +++ b/src/wl/sys/wl_cfg80211_hybrid.c
-@@ -108,14 +108,28 @@ static s32 wl_cfg80211_get_tx_power(stru
+@@ -105,14 +105,28 @@ static s32 wl_cfg80211_get_tx_power(stru
  static s32 wl_cfg80211_get_tx_power(struct wiphy *wiphy, s32 *dbm);
  #endif
  
@@ -31,7 +31,7 @@
  static s32 wl_cfg80211_add_key(struct wiphy *wiphy, struct net_device *dev,
             u8 key_idx, bool pairwise, const u8 *mac_addr, struct key_params *params);
  static s32 wl_cfg80211_del_key(struct wiphy *wiphy, struct net_device *dev,
-@@ -1166,7 +1180,12 @@ static s32 wl_cfg80211_get_tx_power(stru
+@@ -1161,7 +1175,12 @@ static s32 wl_cfg80211_get_tx_power(stru
  	return err;
  }
  
@@ -45,7 +45,7 @@
  static s32
  wl_cfg80211_config_default_key(struct wiphy *wiphy,
  	struct net_device *dev, u8 key_idx, bool unicast, bool multicast)
-@@ -1191,7 +1210,12 @@ wl_cfg80211_config_default_key(struct wi
+@@ -1186,7 +1205,12 @@ wl_cfg80211_config_default_key(struct wi
  	return 0;
  }
  
@@ -59,7 +59,7 @@
  static s32
  wl_cfg80211_add_key(struct wiphy *wiphy, struct net_device *dev,
                      u8 key_idx, bool pairwise, const u8 *mac_addr, struct key_params *params)
-@@ -1312,7 +1336,11 @@ wl_cfg80211_add_key(struct wiphy *wiphy,
+@@ -1307,7 +1331,11 @@ wl_cfg80211_add_key(struct wiphy *wiphy,
  	return err;
  }
  
@@ -72,7 +72,7 @@
  static s32
  wl_cfg80211_del_key(struct wiphy *wiphy, struct net_device *dev,
                      u8 key_idx, bool pairwise, const u8 *mac_addr)
-@@ -1355,7 +1383,13 @@ wl_cfg80211_del_key(struct wiphy *wiphy,
+@@ -1350,7 +1378,13 @@ wl_cfg80211_del_key(struct wiphy *wiphy,
  	return err;
  }
  
