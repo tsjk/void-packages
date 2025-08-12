@@ -1,8 +1,8 @@
 # Template file for 'broadcom-wl-dkms'
 pkgname=broadcom-wl-dkms
 version=6.30.223.271
-revision=18
-archs="i686* x86_64*"
+revision=29
+archs="x86_64*"
 create_wrksrc=yes
 depends="dkms"
 short_desc="Broadcom proprietary wireless drivers for Linux - DKMS kernel module"
