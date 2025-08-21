@@ -1,10 +1,10 @@
 # Template file for 'i2pd-tools'
 pkgname=i2pd-tools
-version=20250225
-revision=1
-_i2pd_tools_gitrev=33fce4b087d92ee90653460bbe7a07cdc0c7b121
-_i2pd_gitrev=dcd15cc2449d6320de6351054e61ef2ee7ebee40
-depends="i2pd"
+version=2.57.0
+revision=20250821
+_i2pd_tools_gitrev=c7dea1f3ff1aefa62d30dba0e5c57e1322026ee3
+_i2pd_gitrev=2716869af40616a5585adf8894ce59bd92f128d1
+depends="i2pd>=${version}_1<=${version}_9999"
 makedepends="zlib-devel boost-devel openssl-devel"
 build_style=gnu-makefile
 short_desc="Some useful tools for I2P"
@@ -15,8 +15,8 @@ distfiles="
  https://github.com/PurpleI2P/i2pd-tools/archive/${_i2pd_tools_gitrev}.tar.gz
  https://github.com/PurpleI2P/i2pd/archive/${_i2pd_gitrev}.tar.gz"
 checksum="
- 2c544561a4fb5826592093835647a05c3de02ef42afccc3392af6adb256d1b3d
- c4f55d2e3e836dd847c52f363a0b33174b11635994eed37fdda1f81b6db7bbaa"
+ b75e34d0c9e311e73c790b845f8a9b14bc81cbe0e14d4548520fdcd4431989ef
+ f5392f9b118fe391e8e3be6fcd4ece2056d2573281b749371f1d9aa9107323df"
 
 post_extract() {
         ( cd i2pd-tools-${_i2pd_tools_gitrev} && rmdir i2pd && mv ../i2pd-${_i2pd_gitrev} i2pd )
@@ -26,8 +26,8 @@ post_extract() {
 
 do_install() {
 	local f
-	for f in autoconf b33address famtool i2pbase64 keygen keyinfo offlinekeys regaddr regaddr_3ld regaddralias routerinfo x25519 verifyhost vain autoconf; do
-		vinstall ${f} 0755 usr/bin
+	for f in autoconf b33address famtool i2pbase64 keygen keyinfo offlinekeys regaddr regaddr_3ld regaddralias routerinfo x25519 verifyhost vain; do
+		vinstall ${f} 0755 usr/bin/i2pd-${f}
 	done
 	vinstall scripts/i2pdctl 0755 usr/bin
 	vlicense LICENSE
