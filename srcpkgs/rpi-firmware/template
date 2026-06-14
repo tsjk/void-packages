@@ -1,9 +1,9 @@
 # Template file for 'rpi-firmware'
 pkgname=rpi-firmware
-version=20260123
+version=20260316
 revision=1
-_rpi_fw=8afbe608658d2ad0093df191afb6135d6a8326bc
-_rpi_brcm=40dea60e27078fac57a3fed51010e2c26865d49b
+_rpi_fw=0ecd94d4964d6ebd6ff6ae2074a478a9e0bbe04d
+_rpi_brcm=9794282eb9f4a2de1f23b41a738926740e975d83
 _rpi_bt=cdf61dc691a49ff01a124752bd04194907f0f9cd
 create_wrksrc=yes
 archs="aarch64* armv6l* armv7l*"
@@ -15,9 +15,10 @@ distfiles="
  https://github.com/raspberrypi/firmware/archive/${_rpi_fw}.tar.gz
  https://github.com/RPi-Distro/firmware-nonfree/archive/${_rpi_brcm}.tar.gz
  https://github.com/RPi-Distro/bluez-firmware/archive/${_rpi_bt}.tar.gz
- https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/LICENCE.cypress>LICENCE.cypress"
-checksum="d3ae267b55e1ca6ec48ebabce761a37ef898eee86d737b0158f0089c377f9e7a
- 846369afaed62275890d9f28f5e23e9f4f0770e6562f904fcb80e68360834d49
+ https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/LICENSES/LICENCE.cypress>LICENCE.cypress"
+checksum="
+ c0869ecfa9a219bdd29c6c1a0960ebdcb528a6aa1ad157035c24e6f8408b06cd
+ c973f51a9f56c2cd8510c82e1ded5349dd321f16cdcbab3ec027b28547b4634a
  5e027003671a8b129d3e44b6f13845f0a51596047d2310cb69e04a22ea16e70f
  ae0db6cc4db33941148df0f67de53e76a77b1b5a46b3165edb7040aa2750015f"
 skip_extraction="LICENCE.cypress"
