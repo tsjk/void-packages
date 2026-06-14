@@ -15,7 +15,7 @@
 # XXX: KEEP IN SYNC WITH rpi5-kernel
 pkgname=rpi-kernel
 version=6.12.114
-revision=1
+revision=2
 _githash=5bd564aaa8dc4b1b8ed11733c19ec8ece63a72cc
 archs="aarch64* armv6l* armv7l*"
 hostmakedepends="perl kmod uboot-mkimage openssl-devel bc bison flex xz pahole
